@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='hypermediachannels',
-    version="0.0.2",
+    version="0.0.3",
     url='https://github.com/hishnash/hypermediachannels',
     author='Matthaus Woolard',
     author_email='matthaus.woolard@gmail.com',
@@ -26,7 +26,6 @@ setup(
         ],
     },
     classifiers=[
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ]
 )
