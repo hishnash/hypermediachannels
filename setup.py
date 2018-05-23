@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='hypermediachannels',
-    version="0.0.1",
+    version="0.0.2",
     url='https://github.com/hishnash/hypermediachannels',
     author='Matthaus Woolard',
     author_email='matthaus.woolard@gmail.com',
@@ -15,7 +15,7 @@ setup(
         'channels>=2.1.1',
         'Django>=2.0.0',
         'djangochannelsrestframework==0.0.2',
-        'channelsmultiplexer==0.0.1'
+        'channelsmultiplexer==0.0.2'
     ],
     extras_require={
         'tests': [

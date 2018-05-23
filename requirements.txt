@@ -1,4 +1,4 @@
 channels>=2.1.1
 Django>=2.0.0
 djangochannelsrestframework==0.0.2
-channelsmultiplexer==0.0.1
+channelsmultiplexer==0.0.2
