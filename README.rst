@@ -2,7 +2,7 @@
 Hyper Media Channels Rest Framework
 ===================================
 
-A Hyper Media style serializer for Django Channels Rest Framework.
+A Hyper Media style serializer for DjangoChannelsRestFramework_.
 
 .. image:: https://travis-ci.org/hishnash/hypermediachannels.svg?branch=master
     :target: https://travis-ci.org/hishnash/hypermediachannels
@@ -12,6 +12,37 @@ API USAGE
 
 This is a collection of serialisers and serialiser fields that creats a
 hypermidea style like PK
+
+Setting up your consumers
+-------------------------
+
+All of your consumers should be mapped through a `AsyncJsonWebsocketDemultiplexer`.
+
+.. code-block:: python
+
+  from channelsmultiplexer import AsyncJsonWebsocketDemultiplexer
+  from djangochannelsrestframework.generics import GenericAsyncAPIConsumer
+  from hypermediachannels.serializers import HyperChannelsApiModelSerializer
+
+  class UserSerializer(HyperChannelsApiModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            '@id',
+            'username'
+        )
+
+  class UserConsumer(GenericAsyncAPIConsumer):
+      queryset = User.objects.all()
+      serializer_class = UserSerializer
+  
+  class MainDemultiplexer(AsyncJsonWebsocketDemultiplexer):
+      applications = {
+          'users': UserConsumer,
+      }
+
+Then when configuring your Channels Application add the ``MainDemultiplexer`` as your main consumer. This way all Websocket connections on that URL will run through the ``Demultiplexer``. See DjangoChannelsRestFramework_ for more deaitls on how to write consumers.
+
 
 HyperChannelsApiModelSerializer
 -------------------------------
@@ -285,3 +316,6 @@ If you need to override the ``stream`` ``action`` or ``lookup`` do this:
            }
 
            many_action_name = 'subscribe'
+
+
+.. _DjangoChannelsRestFramework: https://github.com/hishnash/djangochannelsrestframework
