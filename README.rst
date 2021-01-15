@@ -38,7 +38,7 @@ All of your consumers should be mapped through a `AsyncJsonWebsocketDemultiplexe
   
   class MainDemultiplexer(AsyncJsonWebsocketDemultiplexer):
       applications = {
-          'users': UserConsumer,
+          'users': UserConsumer.as_asgi(),
       }
 
 Then when configuring your Channels Application add the ``MainDemultiplexer`` as your main consumer. This way all Websocket connections on that URL will run through the ``Demultiplexer``. See DjangoChannelsRestFramework_ for more deaitls on how to write consumers.
