@@ -12,7 +12,7 @@ setup(
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     install_requires=[
-        'channels>=2.1.1',
+        'channels>=3.0.0',
         'Django>=2.11',
         'djangochannelsrestframework~=0.0.6',
         'channelsmultiplexer~=0.0.2'

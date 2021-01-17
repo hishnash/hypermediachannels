@@ -77,10 +77,10 @@ class HyperChannelsApiMixin:
 
         for (stream, consumer) in self.api_demultiplexer.applications.items():
 
-            if consumer.queryset is None:
+            if consumer.consumer_class.queryset is None:
                 continue
 
-            match = self._get_model_distance(instance, consumer.queryset.model)
+            match = self._get_model_distance(instance, consumer.consumer_class.queryset.model)
 
             if match is not None:
                 matches.append(
